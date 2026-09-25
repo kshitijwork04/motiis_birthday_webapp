@@ -11,7 +11,12 @@
   // --- DOM Elements ---
   const gateOverlay = document.getElementById('gateOverlay');
   const btnUnlock = document.getElementById('btnUnlock');
+  const mainContent = document.getElementById('mainContent');
 
+  // Safety fallback: if gateOverlay is missing or hidden, reveal content immediately
+  if (!gateOverlay || window.getComputedStyle(gateOverlay).display === 'none') {
+    if (mainContent) mainContent.classList.add('revealed');
+  }
 
   // Cake & Candle
   const birthdayCandle = document.getElementById('birthdayCandle');
@@ -33,8 +38,6 @@
   const letterTipText = document.getElementById('letterTipText');
   const letterPaper = document.getElementById('letterPaper');
 
-
-
   // Lightbox
   const photoLightbox = document.getElementById('photoLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
@@ -44,19 +47,59 @@
   const lightboxBackdrop = document.getElementById('lightboxBackdrop');
   const btnLightboxHeart = document.getElementById('btnLightboxHeart');
 
-
-
-
-
   // --- UNLOCK SURPRISE GATE ---
+  let isUnlocking = false;
+
   btnUnlock.addEventListener('click', () => {
-    burstConfetti(window.innerWidth / 2, window.innerHeight / 2, 70);
-    burstHearts(window.innerWidth / 2, window.innerHeight / 2, 35);
-    
-    gateOverlay.classList.add('fade-out');
+    if (isUnlocking) return;
+    isUnlocking = true;
+
+    btnUnlock.classList.add('clicked');
+
+    // Calculate exact center coordinates of the crystal heart icon
+    const heartSvg = gateOverlay ? gateOverlay.querySelector('.pulsing-heart-svg') : null;
+    let burstX = window.innerWidth / 2;
+    let burstY = window.innerHeight * 0.42;
+
+    if (heartSvg) {
+      const rect = heartSvg.getBoundingClientRect();
+      burstX = rect.left + rect.width / 2;
+      burstY = rect.top + rect.height / 2;
+    }
+
+    // 1. Trigger the majestic portal unlock & light bloom
+    if (gateOverlay) {
+      gateOverlay.classList.add('unlocking');
+    }
+
+    // 2. High-energy burst of hearts & confetti erupting from the heart
+    burstConfetti(burstX, burstY, 80);
+    burstHearts(burstX, burstY, 40);
+
+    // 3. Staggered reveal of the main surprise webpage as gate card ascends
     setTimeout(() => {
-      gateOverlay.style.display = 'none';
-    }, 850);
+      if (mainContent) {
+        mainContent.classList.add('revealed');
+      }
+    }, 160);
+
+    // 4. Secondary celebration shower as main content glides into place
+    setTimeout(() => {
+      burstConfetti(window.innerWidth / 2, window.innerHeight * 0.32, 35);
+    }, 550);
+
+    // 5. Complete transition and hide gate
+    setTimeout(() => {
+      if (gateOverlay) {
+        gateOverlay.classList.add('fade-out');
+      }
+    }, 420);
+
+    setTimeout(() => {
+      if (gateOverlay) {
+        gateOverlay.style.display = 'none';
+      }
+    }, 900);
   });
 
   // --- CANDLE BLOW & RELIGHT INTERACTION ---

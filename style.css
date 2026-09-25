@@ -168,13 +168,41 @@ body {
   justify-content: center;
   padding: 24px 20px;
   overflow: hidden;
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.65s;
+  will-change: opacity, transform;
+}
+
+.gate-overlay.unlocking {
+  pointer-events: none;
 }
 
 .gate-overlay.fade-out {
   opacity: 0;
+  transform: scale(1.06);
   visibility: hidden;
   pointer-events: none;
+}
+
+/* Ethereal Golden Light Bloom on Unlock */
+.gate-unlock-flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 235, 175, 0.95) 0%, rgba(255, 51, 102, 0.5) 45%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.2);
+  z-index: 10;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease-out;
+}
+
+.gate-overlay.unlocking .gate-unlock-flash {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0) scale(8);
+  opacity: 0;
 }
 
 /* Atmospheric Ambient Glows behind the Card */
@@ -217,6 +245,39 @@ body {
   position: relative;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 51, 102, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.16);
   animation: floatGate 4.8s ease-in-out infinite;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.45s ease-out;
+}
+
+/* On unlock: the card glides gracefully upward, dissolves, and blurs slightly like a dream */
+.gate-overlay.unlocking .gate-card {
+  animation: none !important;
+  transform: translate3d(0, -38px, 0) scale(0.93) !important;
+  opacity: 0 !important;
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* The Heart inside blooms enthusiastically */
+.gate-overlay.unlocking .pulsing-heart-svg {
+  transform: scale(1.4) !important;
+  filter: drop-shadow(0 0 28px #ff3366) drop-shadow(0 0 40px rgba(245, 207, 104, 0.85)) !important;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+}
+
+.gate-overlay.unlocking .heart-halo {
+  animation: none;
+  transform: scale(2.2);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.5s ease-out;
+}
+
+/* Ambient glows expand outward */
+.gate-overlay.unlocking .gate-ambient-glow {
+  transform: translateX(-50%) scale(1.5);
+  opacity: 0;
+  transition: transform 0.7s ease-out, opacity 0.6s ease-out;
 }
 
 /* Inner Gold Dashed Hairline */
@@ -506,9 +567,12 @@ body {
   }
 }
 
-.btn-unlock:active {
-  transform: scale(0.96);
-  box-shadow: 0 4px 14px rgba(255, 51, 102, 0.4);
+.btn-unlock:active,
+.btn-unlock.clicked {
+  transform: scale(0.92) !important;
+  background: linear-gradient(135deg, #ff1a53 0%, #ff4d79 100%) !important;
+  box-shadow: 0 0 35px rgba(255, 51, 102, 0.85), 0 0 20px rgba(245, 207, 104, 0.6) !important;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease;
 }
 
 .gate-hint {
@@ -528,6 +592,49 @@ body {
   padding: 24px 18px 80px;
   position: relative;
   z-index: 2;
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* When the gate unlocks, the surprise page glides gracefully upward into crisp focus */
+.app-container.revealed {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.app-container .hero-section > * {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.app-container.revealed .hero-section > * {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.app-container.revealed .luxury-badge {
+  transition-delay: 0.12s;
+}
+
+.app-container.revealed .hero-greeting {
+  transition-delay: 0.22s;
+}
+
+.app-container.revealed .hero-divider {
+  transition-delay: 0.30s;
+}
+
+.app-container.revealed .hero-quote {
+  transition-delay: 0.38s;
+}
+
+.app-container.revealed .ldr-compass-card {
+  transition-delay: 0.46s;
 }
 
 .hero-section {
