@@ -161,12 +161,13 @@ body {
 .gate-overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, #1e0d2d 0%, #09030e 100%);
+  background: radial-gradient(circle at 50% 35%, #240e34 0%, #11051b 55%, #06010a 100%);
   z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 24px 20px;
+  overflow: hidden;
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s;
 }
 
@@ -176,138 +177,346 @@ body {
   pointer-events: none;
 }
 
-.gate-card {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid var(--border-glass-gold);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-radius: var(--radius-lg);
-  padding: 42px 28px;
-  text-align: center;
-  max-width: 390px;
-  width: 100%;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 51, 102, 0.22);
-  animation: floatGate 4.5s ease-in-out infinite;
-  position: relative;
+/* Atmospheric Ambient Glows behind the Card */
+.gate-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
 }
 
+.gate-glow-top {
+  width: 320px;
+  height: 320px;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(255, 51, 102, 0.22) 0%, transparent 70%);
+}
+
+.gate-glow-bottom {
+  width: 280px;
+  height: 280px;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(245, 207, 104, 0.16) 0%, transparent 70%);
+}
+
+/* Haute-Couture Royal Card */
+.gate-card {
+  background: linear-gradient(165deg, rgba(32, 16, 46, 0.88) 0%, rgba(18, 7, 26, 0.94) 100%);
+  border: 1px solid rgba(245, 207, 104, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+  padding: 44px 28px 36px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(255, 51, 102, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.16);
+  animation: floatGate 4.8s ease-in-out infinite;
+}
+
+/* Inner Gold Dashed Hairline */
 .gate-card::before {
   content: '';
   position: absolute;
-  inset: 5px;
-  border: 1px dashed rgba(245, 207, 104, 0.22);
-  border-radius: calc(var(--radius-lg) - 5px);
+  inset: 7px;
+  border: 1px dashed rgba(245, 207, 104, 0.26);
+  border-radius: calc(var(--radius-lg) - 7px);
   pointer-events: none;
 }
 
-@keyframes floatGate {
+/* Golden Filigree Brackets in 4 Corners */
+.gate-card-corner {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  z-index: 2;
+}
 
-  0%,
-  100% {
+.gate-corner-tl {
+  top: 14px;
+  left: 14px;
+  border-top: 2px solid var(--gold-accent);
+  border-left: 2px solid var(--gold-accent);
+  border-top-left-radius: 4px;
+}
+
+.gate-corner-tr {
+  top: 14px;
+  right: 14px;
+  border-top: 2px solid var(--gold-accent);
+  border-right: 2px solid var(--gold-accent);
+  border-top-right-radius: 4px;
+}
+
+.gate-corner-bl {
+  bottom: 14px;
+  left: 14px;
+  border-bottom: 2px solid var(--gold-accent);
+  border-left: 2px solid var(--gold-accent);
+  border-bottom-left-radius: 4px;
+}
+
+.gate-corner-br {
+  bottom: 14px;
+  right: 14px;
+  border-bottom: 2px solid var(--gold-accent);
+  border-right: 2px solid var(--gold-accent);
+  border-bottom-right-radius: 4px;
+}
+
+@keyframes floatGate {
+  0%, 100% {
     transform: translateY(0);
   }
-
   50% {
-    transform: translateY(-7px);
+    transform: translateY(-8px);
   }
 }
 
+/* Royal Pill Badge */
 .envelope-badge {
-  display: inline-block;
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--gold-accent);
-  background: rgba(245, 207, 104, 0.1);
-  padding: 6px 16px;
+  background: linear-gradient(135deg, rgba(245, 207, 104, 0.14) 0%, rgba(255, 51, 102, 0.08) 100%);
+  padding: 7px 18px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(245, 207, 104, 0.35);
+  border: 1px solid rgba(245, 207, 104, 0.45);
   margin-bottom: 22px;
-  box-shadow: 0 0 14px rgba(245, 207, 104, 0.15);
+  box-shadow: 0 0 16px rgba(245, 207, 104, 0.2);
+}
+
+.badge-sparkle {
+  color: #fff;
+  font-size: 0.65rem;
+  animation: starGlint 2s infinite ease-in-out;
+}
+
+@keyframes starGlint {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Enchanted Crystal Heart Centerpiece */
+.gate-heart-wrapper {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-halo {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 51, 102, 0.45);
+  pointer-events: none;
+}
+
+.halo-1 {
+  inset: -6px;
+  animation: haloPulse 2.4s ease-out infinite;
+}
+
+.halo-2 {
+  inset: -14px;
+  animation: haloPulse 2.4s ease-out infinite 0.8s;
+}
+
+@keyframes haloPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
 }
 
 .heart-pulse-icon {
   width: 74px;
   height: 74px;
-  margin: 0 auto 18px;
-  background: radial-gradient(circle, rgba(255, 51, 102, 0.28) 0%, transparent 72%);
+  background: radial-gradient(circle, rgba(255, 51, 102, 0.35) 0%, rgba(255, 51, 102, 0.08) 65%, transparent 80%);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid rgba(255, 51, 102, 0.2);
+  border: 1px solid rgba(255, 105, 180, 0.35);
+  box-shadow: 0 0 24px rgba(255, 51, 102, 0.35), inset 0 0 14px rgba(255, 51, 102, 0.2);
 }
 
 .pulsing-heart-svg {
-  width: 46px;
-  height: 46px;
-  fill: var(--primary-rose);
-  filter: drop-shadow(0 0 14px var(--primary-glow));
-  animation: pulseBeat 1.4s ease-in-out infinite;
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 12px rgba(255, 51, 102, 0.85));
+  animation: heartDoubleBeat 1.8s ease-in-out infinite;
 }
 
-@keyframes pulseBeat {
-
-  0%,
-  100% {
+@keyframes heartDoubleBeat {
+  0%, 100% {
     transform: scale(1);
   }
-
-  15% {
+  12% {
     transform: scale(1.22);
   }
-
-  30% {
-    transform: scale(1.06);
+  24% {
+    transform: scale(1.05);
   }
-
-  45% {
-    transform: scale(1.2);
+  36% {
+    transform: scale(1.18);
   }
-
-  60% {
+  55% {
     transform: scale(1);
   }
+}
+
+/* Typography */
+.gate-pretitle {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--lavender-soft);
+  margin-bottom: 6px;
 }
 
 .gate-title {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #fff;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #ffffff 15%, #ffd1dc 65%, #f5cf68 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: -0.01em;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+/* Haute-Couture Gold Divider */
+.gate-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 16px;
+  width: 70%;
+}
+
+.gate-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 207, 104, 0.55), transparent);
+}
+
+.gate-diamond {
+  font-size: 0.75rem;
+  color: var(--gold-accent);
+  text-shadow: 0 0 10px rgba(245, 207, 104, 0.9);
 }
 
 .gate-subtitle {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 28px;
+  font-size: 0.92rem;
+  color: #e9d5e3;
+  line-height: 1.62;
+  margin-bottom: 26px;
+  font-weight: 400;
+  max-width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Unlock CTA Button */
+.gate-cta-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn-unlock {
   width: 100%;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #ff3366 0%, #d8164f 100%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 16px 28px;
+  background: linear-gradient(135deg, #ff3366 0%, #ff1a53 50%, #d8164f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: var(--radius-full);
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.05rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   cursor: pointer;
-  box-shadow: 0 10px 28px var(--primary-glow);
-  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(255, 51, 102, 0.5), 0 0 20px rgba(245, 207, 104, 0.28);
+  animation: btnGlowPulse 2.8s ease-in-out infinite;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+}
+
+/* Sweeping Light Sheen */
+.btn-unlock::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 50%;
+  height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: rotate(25deg);
+  animation: btnSheenSweep 3.5s infinite ease-in-out;
+}
+
+@keyframes btnSheenSweep {
+  0% {
+    left: -70%;
+  }
+  38%, 100% {
+    left: 140%;
+  }
+}
+
+@keyframes btnGlowPulse {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(255, 51, 102, 0.5), 0 0 20px rgba(245, 207, 104, 0.25);
+  }
+  50% {
+    box-shadow: 0 12px 38px rgba(255, 51, 102, 0.7), 0 0 28px rgba(245, 207, 104, 0.45);
+  }
 }
 
 .btn-unlock:active {
-  transform: scale(0.97);
-  box-shadow: 0 4px 16px var(--primary-glow);
+  transform: scale(0.96);
+  box-shadow: 0 4px 14px rgba(255, 51, 102, 0.4);
+}
+
+.gate-hint {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 14px;
+  opacity: 0.85;
+  letter-spacing: 0.02em;
 }
 
 /* ==============================================================

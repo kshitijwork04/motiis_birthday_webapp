@@ -35,23 +35,64 @@
   ================================================================== -->
 
   <div id="gateOverlay" class="gate-overlay">
+    <!-- Ambient Floating Sparkles / Dreamy Background Glows -->
+    <div class="gate-ambient-glow gate-glow-top"></div>
+    <div class="gate-ambient-glow gate-glow-bottom"></div>
+
     <div class="gate-card">
-      <div class="envelope-badge">💌 For Someone Irreplaceable</div>
-      <div class="heart-pulse-icon">
-        <svg viewBox="0 0 24 24" class="pulsing-heart-svg">
-          <path
-            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-        </svg>
+      <!-- Luxury Golden Filigree Corners -->
+      <span class="gate-card-corner gate-corner-tl"></span>
+      <span class="gate-card-corner gate-corner-tr"></span>
+      <span class="gate-card-corner gate-corner-bl"></span>
+      <span class="gate-card-corner gate-corner-br"></span>
+
+      <!-- Royal Pill Badge -->
+      <div class="envelope-badge">
+        <span class="badge-sparkle">✦</span>
+        <span>A SPECIAL SURPRISE FOR MOTIII</span>
+        <span class="badge-sparkle">✦</span>
       </div>
-      <h1 class="gate-title">To My Sweetheart</h1>
+
+      <!-- Enchanted Crystal Heart Centerpiece with Dual Ripple Aura -->
+      <div class="gate-heart-wrapper">
+        <div class="heart-halo halo-1"></div>
+        <div class="heart-halo halo-2"></div>
+        <div class="heart-pulse-icon">
+          <svg viewBox="0 0 24 24" class="pulsing-heart-svg">
+            <defs>
+              <linearGradient id="gateHeartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff7597" />
+                <stop offset="40%" stop-color="#ff3366" />
+                <stop offset="100%" stop-color="#ba0c3d" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#gateHeartGrad)"
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </div>
+      </div>
+
+      <p class="gate-pretitle">FOR MY FAVOURITE PERSON</p>
+      <h1 class="gate-title">To My Dearest Motiii</h1>
+
+      <!-- Haute-Couture Gold Divider -->
+      <div class="gate-divider">
+        <span class="gate-line"></span>
+        <span class="gate-diamond">✦</span>
+        <span class="gate-line"></span>
+      </div>
+
       <p class="gate-subtitle">
-        Miles may keep us in different cities today, but every single beat of my heart belongs only to you.
+        Miles may keep us in different cities today, but every single beat of my heart belongs only to you. Make a wish and step inside...
       </p>
 
-      <button id="btnUnlock" class="btn-unlock" aria-label="Open Birthday Surprise">
-        <span>Tap to Open My Heart</span>
-        <span class="btn-sparkle">✨</span>
-      </button>
+      <div class="gate-cta-wrapper">
+        <button id="btnUnlock" class="btn-unlock" aria-label="Open Birthday Surprise">
+          <span class="btn-text">Tap to Open</span>
+          <span class="btn-sparkle">✨</span>
+        </button>
+        <p class="gate-hint">🎧 Turn your sound on for the sweet melody</p>
+      </div>
     </div>
   </div>
 
