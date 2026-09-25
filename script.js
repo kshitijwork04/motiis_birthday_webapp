@@ -232,28 +232,28 @@
   window.addEventListener('resize', resizeAmbientCanvas);
   resizeAmbientCanvas();
 
-  // Starry Particles
+  // Starry Particles (optimized count for 60fps mobile)
   const stars = [];
-  for (let i = 0; i < 45; i++) {
+  for (let i = 0; i < 22; i++) {
     stars.push({
       x: Math.random() * ambientWidth,
       y: Math.random() * ambientHeight,
-      radius: Math.random() * 1.5 + 0.5,
+      radius: Math.random() * 1.4 + 0.6,
       alpha: Math.random() * 0.8 + 0.2,
-      speed: Math.random() * 0.02 + 0.005
+      speed: Math.random() * 0.015 + 0.005
     });
   }
 
-  // Floating Hearts
+  // Floating Hearts (optimized count for 60fps mobile)
   const floatingHearts = [];
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 9; i++) {
     floatingHearts.push({
       x: Math.random() * ambientWidth,
       y: Math.random() * ambientHeight + ambientHeight,
-      size: Math.random() * 12 + 8,
-      speedY: Math.random() * 0.7 + 0.3,
-      speedX: (Math.random() - 0.5) * 0.4,
-      opacity: Math.random() * 0.45 + 0.15,
+      size: Math.random() * 10 + 8,
+      speedY: Math.random() * 0.6 + 0.25,
+      speedX: (Math.random() - 0.5) * 0.3,
+      opacity: Math.random() * 0.4 + 0.15,
       color: Math.random() > 0.4 ? '#ff4370' : '#ff95b2'
     });
   }
@@ -281,7 +281,7 @@
     // Draw Stars
     stars.forEach(s => {
       s.alpha += s.speed;
-      if (s.alpha > 0.95 || s.alpha < 0.15) s.speed = -s.speed;
+      if (s.alpha > 0.9 || s.alpha < 0.15) s.speed = -s.speed;
       ambientCtx.beginPath();
       ambientCtx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
       ambientCtx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, s.alpha)})`;
@@ -319,64 +319,75 @@
 
   const particles = [];
   const confettiColors = ['#ff4370', '#f5cf68', '#cbb2fe', '#ffffff', '#ff95b2', '#ff6584'];
+  let fxRunning = false;
 
-  function burstConfetti(originX, originY, count = 60) {
+  function ensureFxRunning() {
+    if (!fxRunning) {
+      fxRunning = true;
+      requestAnimationFrame(animateFx);
+    }
+  }
+
+  function burstConfetti(originX, originY, count = 50) {
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 8 + 3;
+      const speed = Math.random() * 7 + 2.5;
       particles.push({
         type: 'confetti',
         x: originX,
         y: originY,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed - 2.5,
-        width: Math.random() * 8 + 4,
-        height: Math.random() * 6 + 3,
+        width: Math.random() * 7 + 3,
+        height: Math.random() * 5 + 3,
         color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 12,
+        rotationSpeed: (Math.random() - 0.5) * 10,
         life: 1,
-        decay: Math.random() * 0.015 + 0.008
+        decay: Math.random() * 0.016 + 0.01
       });
     }
+    ensureFxRunning();
   }
 
-  function burstHearts(originX, originY, count = 25) {
+  function burstHearts(originX, originY, count = 22) {
     for (let i = 0; i < count; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 7 + 2;
+      const speed = Math.random() * 6 + 2;
       particles.push({
         type: 'heart',
         x: originX,
         y: originY,
         vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed - 2,
-        size: Math.random() * 12 + 10,
+        vy: Math.sin(angle) * speed - 1.8,
+        size: Math.random() * 10 + 8,
         color: Math.random() > 0.3 ? '#ff4370' : '#f5cf68',
         life: 1,
-        decay: Math.random() * 0.02 + 0.01
+        decay: Math.random() * 0.02 + 0.012
       });
     }
+    ensureFxRunning();
   }
 
   // Delicate micro-heart sparks for touch/tap anywhere
   function tapHeartSparks(originX, originY) {
     const colors = ['#ff4370', '#f5cf68', '#ff95b2', '#ffd1dc'];
-    for (let i = 0; i < 4; i++) {
-      const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.6;
-      const speed = Math.random() * 3 + 1.2;
+    for (let i = 0; i < 3; i++) {
+      const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.5;
+      const speed = Math.random() * 2.5 + 1;
       particles.push({
         type: 'heart',
-        x: originX + (Math.random() - 0.5) * 10,
-        y: originY + (Math.random() - 0.5) * 10,
+        x: originX + (Math.random() - 0.5) * 8,
+        y: originY + (Math.random() - 0.5) * 8,
         vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed - 1.2,
-        size: Math.random() * 7 + 6,
+        vy: Math.sin(angle) * speed - 1,
+        size: Math.random() * 6 + 5,
         color: colors[Math.floor(Math.random() * colors.length)],
         life: 1,
-        decay: Math.random() * 0.03 + 0.025
+        decay: Math.random() * 0.035 + 0.025
       });
     }
+    ensureFxRunning();
   }
 
   // Interactive spark trail on any tap / touch on screen
@@ -386,6 +397,12 @@
   }, { passive: true });
 
   function animateFx() {
+    if (particles.length === 0) {
+      fxCtx.clearRect(0, 0, fxWidth, fxHeight);
+      fxRunning = false;
+      return; // Stop animation loop when idle to preserve 60/120fps!
+    }
+
     fxCtx.clearRect(0, 0, fxWidth, fxHeight);
 
     for (let i = particles.length - 1; i >= 0; i--) {
@@ -415,8 +432,12 @@
       }
     }
 
-    requestAnimationFrame(animateFx);
+    if (particles.length > 0) {
+      requestAnimationFrame(animateFx);
+    } else {
+      fxCtx.clearRect(0, 0, fxWidth, fxHeight);
+      fxRunning = false;
+    }
   }
-  requestAnimationFrame(animateFx);
 
 })();

@@ -76,65 +76,66 @@ body {
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(90px);
-  opacity: 0.38;
+  opacity: 0.35;
   z-index: 0;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .glow-1 {
-  width: 340px;
-  height: 340px;
-  background: radial-gradient(circle, #ff2a5f 0%, transparent 70%);
-  top: -60px;
-  right: -80px;
-  animation: floatOrb1 12s ease-in-out infinite alternate;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(255, 42, 95, 0.45) 0%, rgba(255, 42, 95, 0.15) 45%, transparent 70%);
+  top: -80px;
+  right: -100px;
+  animation: floatOrb1 16s ease-in-out infinite alternate;
 }
 
 .glow-2 {
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, #7e22ce 0%, transparent 70%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(126, 34, 206, 0.4) 0%, rgba(126, 34, 206, 0.12) 45%, transparent 70%);
   top: 35%;
-  left: -120px;
-  animation: floatOrb2 16s ease-in-out infinite alternate;
+  left: -140px;
+  animation: floatOrb2 20s ease-in-out infinite alternate;
 }
 
 .glow-3 {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, #f59e0b 0%, transparent 70%);
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, rgba(245, 158, 11, 0.1) 45%, transparent 70%);
   bottom: 10%;
-  right: -60px;
-  animation: floatOrb3 14s ease-in-out infinite alternate;
+  right: -80px;
+  animation: floatOrb3 18s ease-in-out infinite alternate;
 }
 
 @keyframes floatOrb1 {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   100% {
-    transform: translate(-40px, 60px) scale(1.15);
+    transform: translate3d(-30px, 40px, 0) scale(1.1);
   }
 }
 
 @keyframes floatOrb2 {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   100% {
-    transform: translate(60px, -40px) scale(1.1);
+    transform: translate3d(40px, -30px, 0) scale(1.08);
   }
 }
 
 @keyframes floatOrb3 {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   100% {
-    transform: translate(-30px, -50px) scale(1.2);
+    transform: translate3d(-20px, -30px, 0) scale(1.12);
   }
 }
 
@@ -422,15 +423,16 @@ body {
    LUXURY CELESTIAL CONNECTION / LDR COMPASS
 ================================================================== */
 .ldr-compass-card {
-  background: linear-gradient(160deg, rgba(32, 18, 48, 0.85) 0%, rgba(18, 9, 29, 0.95) 100%);
+  background: linear-gradient(160deg, rgba(32, 18, 48, 0.92) 0%, rgba(18, 9, 29, 0.97) 100%);
   border: 1px solid var(--border-glass-gold);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-md);
   padding: 22px 18px 18px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .ldr-compass-card::before {
@@ -646,13 +648,14 @@ body {
 .section-card {
   margin-top: 40px;
   padding: 34px 22px;
-  background: linear-gradient(155deg, rgba(28, 16, 42, 0.85) 0%, rgba(14, 7, 22, 0.92) 100%);
+  background: linear-gradient(155deg, rgba(26, 14, 38, 0.92) 0%, rgba(13, 6, 20, 0.96) 100%);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   position: relative;
+  transform: translateZ(0);
 }
 
 .section-header {
