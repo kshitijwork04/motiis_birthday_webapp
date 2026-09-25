@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d0914" />
+  <title>Happy Birthday, My Entire Universe ✨❤️</title>
+
+  <!-- SEO & OpenGraph for when he sends the link on WhatsApp/iMessage/Instagram -->
+  <meta name="description" content="A special birthday surprise for the most incredible girl in the world." />
+  <meta property="og:title" content="Happy Birthday, My Love ✨" />
+  <meta property="og:description"
+    content="Even across the miles, my heart beats only for you. Tap to unlock your surprise 💌" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Elegant Serifs, Modern Body & Tender Handwritten script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Floating Ambient Particles Canvas (Starry Night & Floating Hearts) -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- ==============================================================
+       CHAPTER 0: THE GOLDEN GATE (WELCOME / UNLOCK MODAL)
+       Ensures audio permission & creates breathtaking anticipation
+  ================================================================== -->
+
+  <div id="gateOverlay" class="gate-overlay">
+    <div class="gate-card">
+      <div class="envelope-badge">💌 For Someone Irreplaceable</div>
+      <div class="heart-pulse-icon">
+        <svg viewBox="0 0 24 24" class="pulsing-heart-svg">
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      </div>
+      <h1 class="gate-title">To My Sweetheart</h1>
+      <p class="gate-subtitle">
+        Miles may keep us in different cities today, but every single beat of my heart belongs only to you.
+      </p>
+
+      <button id="btnUnlock" class="btn-unlock" aria-label="Open Birthday Surprise">
+        <span>Tap to Open My Heart</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+    </div>
+  </div>
+
+
+
+  <!-- Ambient Luxury Glow Orbs for High-End Depth -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- ==============================================================
+       MAIN SURPRISE WRAPPER
+  ================================================================== -->
+  <main class="app-container" id="mainContent">
+
+    <!-- HERO SECTION: The Haute-Couture Birthday Revelation -->
+    <header class="hero-section">
+      <div class="luxury-badge">
+        <span class="badge-sparkle">✦</span>
+        <span class="badge-text">A CELEBRATION OF THE ONE & ONLY</span>
+        <span class="badge-sparkle">✦</span>
+      </div>
+
+      <h1 class="hero-greeting">
+        <span class="greeting-prefix">Happy Birthday,</span>
+        <span class="highlight-name" id="displayGirlfriendName">Motiiii ❤️</span>
+      </h1>
+
+      <div class="hero-divider">
+        <span class="divider-line"></span>
+        <span class="divider-diamond">◆</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <p class="hero-quote">
+        “If I had a flower for every time I thought of you across these miles, I could walk through an eternal garden
+        forever.”
+      </p>
+
+      <!-- LUXURY CELESTIAL CONNECTION / LDR COMPASS -->
+      <div class="ldr-compass-card">
+        <div class="compass-top-header">
+          <div class="satellite-live-indicator">
+            <span class="pulse-beacon"></span>
+            <span class="satellite-text"></span>
+          </div>
+        </div>
+
+        <div class="ldr-cities">
+          <div class="city-box">
+            <div class="city-icon-frame">
+              <span class="city-pin">📍</span>
+            </div>
+            <span class="city-name" id="cityA">Me</span>
+            <span class="city-label">Longinggg For You</span>
+          </div>
+
+          <div class="ldr-connector">
+            <div class="flight-line">
+              <div class="glowing-flight-path"></div>
+              <span class="animated-plane">✈️</span>
+            </div>
+            <div class="distance-badge">
+              <span class="distance-number" id="ldrDistanceText">352 km</span>
+              <span class="sub-dist"></span>
+            </div>
+          </div>
+
+          <div class="city-box">
+            <div class="city-icon-frame pulse-frame">
+              <span class="city-pin">📍</span>
+            </div>
+            <span class="city-name" id="cityB">Youuu</span>
+            <span class="city-label">Where My Heart Lives</span>
+          </div>
+        </div>
+
+        <div class="heartbeat-synced">
+          <div class="pulse-ring"></div>
+          <div class="ecg-line-wave"></div>
+          <span class="heartbeat-caption">💓</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: INTERACTIVE BIRTHDAY CAKE & MAKE A WISH -->
+    <section class="section-card cake-section" id="cakeSection">
+      <div class="section-header">
+        <span class="section-tag">🎂 A Ritual Just For my girlll </span>
+        <h2 class="section-title">Blow Your Birthday Candle cutiee pieee </h2>
+        <p class="section-desc">
+          LISTEN motiii first Close your EYESSS,
+          make the deepest wish in your heart, and tap the candle flame to blow
+          it out!
+        </p>
+      </div>
+
+      <!-- 3-Tier CSS Birthday Cake (Correctly Stacked: Candle -> Top Tier -> Middle Tier -> Bottom Tier -> Stand) -->
+      <div class="cake-stage" id="cakeStage">
+        <!-- Candle on top -->
+        <div class="candle" id="birthdayCandle" title="Tap me to blow the candle!">
+          <div class="flame" id="candleFlame"></div>
+          <div class="candle-smoke" id="candleSmoke"></div>
+        </div>
+
+        <!-- Tier 1: Top Tier (Smallest) -->
+        <div class="cake-layer layer-top">
+          <div class="cake-icing"></div>
+          <div class="cake-cherries">
+            <span>🌸</span><span>🍓</span><span>🌸</span>
+          </div>
+        </div>
+
+        <!-- Tier 2: Middle Tier -->
+        <div class="cake-layer layer-middle">
+          <div class="cake-icing"></div>
+          <div class="cake-cherries">
+            <span>🍓</span><span>🌸</span><span>🍓</span>
+          </div>
+        </div>
+
+        <!-- Tier 3: Bottom Tier (Widest) -->
+        <div class="cake-layer layer-bottom">
+          <div class="cake-icing"></div>
+          <div class="cake-cherries">
+            <span>🌸</span><span>🍓</span><span>🌸</span><span>🍓</span>
+          </div>
+        </div>
+
+        <!-- Cake Plate / Stand at the bottom -->
+        <div class="cake-plate"></div>
+      </div>
+
+      <!-- Instruction / Result Message -->
+      <div class="cake-action-area">
+        <button id="btnBlowCandle" class="btn-blow-candle">
+          <span class="cake-icon">🕯️</span>
+          <span id="blowText">Tap To Blow The Candle</span>
+        </button>
+        <div id="wishGrantedMessage" class="wish-granted-banner hidden">
+          <div class="wish-emoji">🎉✨👑✨🎉</div>
+          <h3>Happiestttt birthdayyy Motiii</h3>
+          <p>
+            Your Wish Has Reached The Star!!
+            Anddd whatever you wished for, I pray it comes true ten times over. You deserve all the happiness, warmth,
+            and
+            laughter the universe has to offer.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHY I LOVE YOU (INTERACTIVE LOVE DECK) -->
+    <section class="section-card love-deck-section">
+      <div class="section-header">
+        <span class="section-tag">🫶✨</span>
+        <h2 class="section-title">Reasons You Mean The World To Me</h2>
+        <p class="section-desc">Swipe or tap the cards to discover just a few of the billion reasons...</p>
+      </div>
+
+      <div class="reasons-carousel" id="reasonsDeck">
+        <!-- Card 1 -->
+        <div class="reason-card active" data-index="0">
+          <div class="card-glass">
+            <span class="card-number">CHAPTER I</span>
+            <div class="card-heart">✨</div>
+            <h3>Your Radiant Smile</h3>
+            <p>
+              The way your face lights up when you laugh can literallyy instantly turn my darkest, saddestt and most
+              stressful day into absolute peace. It’s literalyy my favorite sight in the world.<br><br>
+              yourr smilee can make my wholee dayyy 💖<br>
+              nddddd i can do anything for youuuu just to make you smile like that once moreee 🙈.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="reason-card" data-index="1">
+          <div class="card-glass">
+            <span class="card-number">CHAPTER II</span>
+            <div class="card-heart">🌙</div>
+            <h3>Our Sleepy 2 AM Calls</h3>
+            <p>
+              Listening to you rantt about your day until you slowly fall in sleepp.🎀😂. . . is just soo satisfyingg
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="reason-card" data-index="2">
+          <div class="card-glass">
+            <span class="card-number">CHAPTER III</span>
+            <div class="card-heart">👑</div>
+            <h3>Your Beautiful Strength</h3>
+            <p>
+              Motiii you know i just adore youu, your gentle heart, and howw kindd you are yaaar. You carry yourself
+              with such warmth and grace that leaves me in awe every day.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="reason-card" data-index="3">
+          <div class="card-glass">
+            <span class="card-number">CHAPTER IV</span>
+            <div class="card-heart">🏡</div>
+            <h3>You Feel Like Home</h3>
+            <p>
+              No matter how far apart we are geographically, wherever you are is where my home is. My heart found its
+              resting place the moment I fell for you.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="reasons-nav">
+        <button id="btnPrevReason" class="nav-arrow" aria-label="Previous card">←</button>
+        <div class="nav-dots" id="reasonsDots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <button id="btnNextReason" class="nav-arrow" aria-label="Next card">→</button>
+      </div>
+    </section>
+
+    <!-- SECTION 3: MEMORIES COLLAGE (SINGLE LUXURY FRAME) -->
+    <section class="section-card gallery-section" id="photoSection">
+      <div class="collage-header">
+        <h2 class="collage-script-title">Happyyy birthdayyyy 💖</h2>
+      </div>
+      <div class="collage-wrapper">
+        <div class="polaroid-item collage-polaroid" data-title="Happyyy birthdayyyy Motiii ❤️" data-caption="">
+          <div class="tape-sticker heart-tape"></div>
+          <div class="polaroid-frame collage-frame">
+            <img src="assets/photos/collage.jpg" alt="Happy Birthday Motiii Collage" id="collageImg"
+              class="polaroid-img collage-img" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE SURPRISE WAX-SEALED LOVE LETTER 💌 -->
+    <section class="section-card letter-section" id="letterSection">
+      <div class="section-header">
+        <span class="section-tag">✉️ From My takluu To Motiii </span>
+        <h2 class="section-title">A Letter Across The Miles</h2>
+        <p class="section-desc">Tap the wax seal to break it open and read what i want to tell you today...</p>
+      </div>
+
+      <!-- 3D Wax-Sealed Envelope Container -->
+      <div class="envelope-wrapper">
+        <div class="envelope" id="waxEnvelope">
+          <div class="envelope-back"></div>
+
+          <!-- Unfolded Letter Paper -->
+          <div class="letter-paper" id="letterPaper">
+            <div class="paper-texture">
+              <div class="letter-stamp">❤️ MOTIII</div>
+              <div class="letter-date">September 26, 2026</div>
+
+              <div class="letter-content" id="letterContent">
+                <p class="salutation">Happiesttttt birthdayyyy motiiiii 🫂🫶🏻✨🎉🥳</p>
+                <p>
+                  Happyyy birthdayyy to myy favouritee personn ♥️.<br>
+                  Firstlyyy I realllyyy wantttt to hugg youuu tightlyyyyyy and wishh youuuuuu myy sweetheart
+                  🫶🏻🫂,,<br>
+                  Butt the distance 😩,,, so justt imagineee I am there with youuuu and mii tula tightlyyy huh kel ahee
+                  and happyyy birthdayyy motiii ♥️🫶🏻🫂👀🌚✨🙈.... Sodin s nahi mili ekda hug kelya vr 😭
+                </p>
+
+                <p>
+                  Okayyy seee likee...<br>
+                  Seee motiiii I genuinely don't knoww where to starttt like manhach t khupp kahi ahe tula aaj, okay so
+                  firstlyy thank youu thank you for existing in my lifee likeeeee itke lok ahet duniyatt andddd I mett
+                  youuuuuuuuu 🧿🤞🏻💗,,,
+                </p>
+
+                <p>
+                  Like 5 years ago bhaii motiiii 5 varsh zalee yaaaaarr that we aree besttttt friendsss and I reallly
+                  thank godd for giving me this wonderful girl as myy bestesttt friendd,,, like just bhai he 5 varsh
+                  kashe gele tujhya sobat kahi samjl s nahi ahe yaaaar,,, like just imagine 9th std ek divas asas
+                  randomly i messaged youu and suddenly todayyy after 5 years we areee here in college... Likee Wowww,,,
+                </p>
+
+                <p>
+                  And ya 5 varshat tu t nahi baddali pn jitka badal tujhya mud majhyat zal ahe n... Likee thankk youu
+                  for thatt,,,
+                </p>
+
+                <p>
+                  Tujhya sarikhi friend aplya life madhi asn is literally like a blessinggg..<br>
+                  Like the kind of person you are n motiii yaaar you are just beautifulll like literally not just by
+                  loooks but by nature by your behaviour towards others, by the caree you takee about peoples feeling ki
+                  use kya lagega ki okayy as ks manhun jau de (until it's very necessary obv) pn still like how can
+                  someoneee bee so kinddd and soo likee perfect...
+                </p>
+
+                <p>
+                  thank youuu for being the mostt beautifulll part of my lifeeee✨,,, yk motiii tu n aadat banun geli
+                  ahes yaaar majhiii like honestly sakadi uthtach pahila thought tujha rahteee and ratrii zopach agodr
+                  cha pahila v4 hi tuch rahtes yaaaar,,,, yk apl roj boln, tujh majhya vr ragavn tujh majhya chutiya
+                  hrkatan ve chiddnn bhaiii like honestlyy jr ek hi divas boln nahi zal I miss all theseee alottt like
+                  Idk I miss you alottt yaaaar,, like kuth ekta aslya vr thik ahe I miss youu even literally when I am
+                  with my friends likee je apan manhto ki okayy we are happiest when we are with friends bhaii I miss
+                  you there motiiiii you aree thattttt special to meee 🫂🩷✨
+                </p>
+
+                <p>
+                  Kadhi Kadhi as vatte ki I don't tell you this enough, but I really admire the person you are. The way
+                  you think, the way you caree, howww kind you aree, the way you can make me smile without even
+                  trying😭🙈😗,,,
+                </p>
+
+                <p>
+                  There's something about you that is justtttt impossible too explainnn,,, LIKEEE you aree justtt justtt
+                  amazinggg personnnn yaaar, sagdyat sobat kitii kind kitii chhhan behave krtee likee bhaiii you are
+                  like the personnn everyonee needs in there lifeeee you aree justtt adorablee🫶🏻🫂💗✨👀<br>
+                  justt I don't have worsssa now ashi t khup tareef suchte pn ab nahi aa rha hai kuch dimak maiii...
+                </p>
+
+                <p>
+                  Okayy yk honestly, I love the way we areee. Likee I love the comfort we have with each other, he faltu
+                  conversations, the little little cuteee moments, anii even tujh majhya vr ragavn (je ki bante hi
+                  causeee meri harkate hi waisii hoti haiii 🤧) likee motiii yk with you, even the most ordinary moments
+                  somehow feel differenttt..
+                </p>
+
+                <p>
+                  Andd pleasee never forget how special you are okayy. And jevha kevha hi swatah vr doubt krshil n, I
+                  hope you remember that there is someone who sees so much more in you than you sometimes see in
+                  yourself ♥️.<br>
+                  Cause motiiii youu know you are literally the one to whom I look uptooo and likee I just admiree howw
+                  ambitious you aree yaar motiii... And I am reallyy proud of youu for thattt like really bhaiii...🫂♥️
+                </p>
+
+                <p>
+                  Ani pah motiii zalll yaaar khup ata okayy... And see ik know everythingg ans whatever yaaar but Now
+                  justtt pleasee breathee calm downn andddd be a little happy for yourself yaaaar.. 🫶🏻🫂🧿
+                </p>
+
+                <p>
+                  So aaaj, justtt forget about everything else for a while. Smile a littlee moreeee(click the
+                  beautifulll pictures ans send it to meee 😍🌚) Enjoyyy your dayyyy alotttt🙂↔️😌.<br>
+                  Ans itk athvn thevv kiii somewhere, there's someone smilinggg just because it's your birthdayyy.<br>
+                  Likee motiii I am tellinggg you I am literally moree happyyy today than my birthdayy itselff
+                  bhaiii😭.<br>
+                  Becausee yk there someonee jyachya sathii you worth the wholeee world and moreeeeee 🌚
+                </p>
+
+                <p>
+                  I hope upcoming months and year is kinder to you.<br>
+                  I hope you achieve everything you're working forrrr 🤞🏻🧿<br>
+                  I hope you laugh as hard as youu can 😌😁<br>
+                  I hope you make memories you'll never want to forget.<br>
+                  And selfishly, I hope I get to be a part of many of those memoriessss 😗🫶🏻🧿♥️ ✨
+                </p>
+
+                <p class="letter-signoff">
+                  Happppyyy Birthdayyyy once again ❤️<br>
+                  Stay exactly the way you are — because that's the personnn I fell for anddddddd<br>
+                  <span class="handwritten-signature">I love youuuu sweetheartt, I love you alottt and will always lovee
+                    you no matter what…. ❤️🫶🏻</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="envelope-front"></div>
+          <div class="envelope-top" id="envelopeTop"></div>
+
+          <!-- Wax Seal Button -->
+          <div class="wax-seal" id="waxSeal" title="Tap to break the seal and read!">
+            <div class="seal-inner">
+              <span>🫰</span>
+            </div>
+            <div class="seal-ripple"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="letter-tip">
+        <span id="letterTipText">👆 Tap the wax seal to open</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================================
+       PHOTO LIGHTBOX MODAL (FOR VIEWING POLAROIDS HIGH-RES)
+  ================================================================== -->
+  <div id="photoLightbox" class="lightbox-overlay" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close" id="btnCloseLightbox" aria-label="Close photo">✕</button>
+      <div class="lightbox-frame">
+        <img id="lightboxImg" src="" alt="Enlarged photo" class="lightbox-img" />
+      </div>
+      <div class="lightbox-info">
+        <h3 id="lightboxTitle"></h3>
+        <p id="lightboxCaption"></p>
+        <button class="lightbox-heart-btn" id="btnLightboxHeart">
+          <span>Love This Memory</span> ❤️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti and Heart Particle Canvas -->
+  <canvas id="fxCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
